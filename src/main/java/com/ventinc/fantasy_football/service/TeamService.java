@@ -32,4 +32,16 @@ public class TeamService {
     public List<Team> getAllTeamsSortedByWins(){
         return teamRepo.findAllByOrderByWinsDesc();
     }
+
+    // Update team logo URL
+    public void updateLogoUrl(Long team_id, String logoUrl) {
+        Team teamToUpdate = teamRepo.findById(team_id).orElse(null);
+
+        if (teamToUpdate != null) {
+            teamToUpdate.setLogoUrl(logoUrl);
+            teamRepo.save(teamToUpdate);
+        } else {
+            throw new RuntimeException("Team not found with id: " + team_id);
+        }
+    }
 }

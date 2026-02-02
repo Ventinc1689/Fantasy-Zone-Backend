@@ -44,27 +44,6 @@ public class PlayerService {
         return playerRepo.findByPositionContainingIgnoreCase(position);
     }
 
-    // Retrieve all players sorted by PPR
-    public List<Player> getAllPlayersSortedByPpr() {
-        return playerRepo.findAllByOrderByPprDesc();
-    }
-
-    // Retrieve players by team sorted by PPR
-    public List<Player> getPlayersByTeamSortedByPpr(String team) {
-        if (team == null || team.trim().isEmpty()) {
-            return List.of();
-        }
-        return playerRepo.findByTeamContainingIgnoreCaseOrderByPprDesc(team);
-    }
-
-    // Retrieve players by position sorted by PPR
-    public List<Player> getPlayersByPositionSortedByPpr(String position) {
-        if (position == null || position.trim().isEmpty()) {
-            return List.of();
-        }
-        return playerRepo.findByPositionContainingIgnoreCaseOrderByPprDesc(position);
-    }
-
     // Retrieve all players sorted by PPR per game
     public List<Player> getAllPlayersSortedByPprPerGame(){
         return playerRepo.findAllByOrderByPprPerGameDesc();

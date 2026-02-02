@@ -3,10 +3,7 @@ package com.ventinc.fantasy_football.controller;
 import com.ventinc.fantasy_football.model.Team;
 import com.ventinc.fantasy_football.service.TeamService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,5 +33,12 @@ public class TeamController {
     @GetMapping("/sorted/wins")
     public ResponseEntity<List<Team>> getAllTeamsSortedByWins(){
         return ResponseEntity.ok(teamService.getAllTeamsSortedByWins());
+    }
+
+    // Update team logo URL
+    @PutMapping("/{team_id}")
+    public ResponseEntity<Void> updateLogoUrl(@PathVariable Long team_id, @RequestBody String logoUrl) {
+        teamService.updateLogoUrl(team_id, logoUrl);
+        return ResponseEntity.noContent().build();
     }
 }

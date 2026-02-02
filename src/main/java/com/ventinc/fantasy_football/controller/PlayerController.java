@@ -3,10 +3,7 @@ package com.ventinc.fantasy_football.controller;
 import com.ventinc.fantasy_football.model.Player;
 import com.ventinc.fantasy_football.service.PlayerService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -42,24 +39,6 @@ public class PlayerController {
     @GetMapping("/position/{position}")
     public ResponseEntity<List<Player>> getPlayersByPosition(@PathVariable String position) {
         return ResponseEntity.ok(playerService.getPlayersByPosition(position));
-    }
-
-    // Retrieve all players sorted by PPR
-    @GetMapping("/sorted/ppr")
-    public ResponseEntity<List<Player>> getAllPlayersSortedByPpr() {
-        return ResponseEntity.ok(playerService.getAllPlayersSortedByPpr());
-    }
-
-    // Retrieve players by team sorted by PPR
-    @GetMapping("/sorted/ppr/team/{team}")
-    public ResponseEntity<List<Player>> getPlayersByTeamSortedByPpr(@PathVariable String team){
-        return ResponseEntity.ok(playerService.getPlayersByTeamSortedByPpr(team));
-    }
-
-    // Retrieve players by position sorted by PPR
-    @GetMapping("/sorted/ppr/position/{position}")
-    public ResponseEntity<List<Player>> getPlayersByPositionSortedByPpr(@PathVariable String position){
-        return ResponseEntity.ok(playerService.getPlayersByPositionSortedByPpr(position));
     }
 
     // Retrieve all players sorted by PPR per game
